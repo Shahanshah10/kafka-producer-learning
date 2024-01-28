@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: kafka-producer-learning
+
+server:
+  port: 9191
