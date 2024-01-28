@@ -1,5 +1,6 @@
 package com.shah.learn.controller;
 
+import com.shah.learn.dto.Customer;
 import com.shah.learn.producer.KafkaMessageProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,16 @@ public class EventController {
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
 
+    @PostMapping(value = "/publishCustomerInfo")
+    public ResponseEntity<?> publishCustomerInfo(@RequestBody Customer customer){
+        try {
+            kafkaMessageProducer.sendCustomerToTopic(customer);
+            return ResponseEntity.status(HttpStatus.OK).body("Message is successfully publish to topic...");
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
 

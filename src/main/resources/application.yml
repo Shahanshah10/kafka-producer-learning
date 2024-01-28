@@ -1,9 +1,13 @@
 spring:
   application:
     name: kafka-producer-learning
-  kafka:
-    producer:
-      bootstrap-servers: localhost:9092
+# This first way to define kafka config && other way-> is defining java level bean class.
+#  kafka:
+#    producer:
+#      bootstrap-servers: localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#
 
 server:
   port: 9191
